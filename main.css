@@ -1,0 +1,129 @@
+/* Custom Tailwind Configuration */
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                'cream-100': '#fdfaf6',
+                'green-700': '#3d5c52',
+                'green-800': '#304740',
+                'orange-500': '#f56565',
+                'orange-600': '#e53e3e',
+            },
+            fontFamily: {
+                'playfair': ['"Playfair Display"', 'serif'],
+                'roboto': ['"Roboto"', 'sans-serif'],
+            },
+            keyframes: {
+                'fade-in-up': {
+                    '0%': {
+                        opacity: '0',
+                        transform: 'translateY(20px)'
+                    },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateY(0)'
+                    },
+                }
+            },
+            animation: {
+                'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+            }
+        }
+    }
+}
+
+/* Global Styles */
+body {
+    @apply bg-cream-100;
+}
+
+/* Navbar Styles */
+.nav-link {
+    @apply text-gray-600 font-medium hover:text-orange-500 transition-colors duration-300 relative;
+}
+
+.nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-orange-500 scale-x-0 origin-left transition-transform duration-300;
+    transform: translateY(4px);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    @apply scale-x-100;
+}
+
+.nav-link.active {
+    @apply text-orange-500;
+}
+
+
+/* Category Card Styles */
+.category-card {
+    @apply bg-white p-6 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col items-center justify-center;
+}
+
+.category-card .icon-wrapper {
+    @apply w-20 h-20 bg-orange-500/10 text-orange-500 rounded-full flex items-center justify-center text-3xl transition-all duration-300;
+}
+
+.category-card:hover .icon-wrapper {
+    @apply bg-orange-500 text-white scale-110;
+}
+
+/* Recipe Card Styles */
+.recipe-card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+}
+
+.recipe-card-image {
+    @apply w-full h-48 object-cover;
+}
+
+.recipe-card-content {
+    @apply p-5;
+}
+
+.recipe-card-title {
+    @apply font-playfair text-xl font-bold text-green-800 mb-2 truncate;
+}
+
+.recipe-card-description {
+    @apply text-gray-600 text-sm mb-4 h-10 overflow-hidden;
+}
+
+.recipe-card-tag {
+    @apply text-xs font-semibold bg-green-700/10 text-green-800 px-2 py-1 rounded-full;
+}
+
+/* Footer Link */
+.footer-link {
+    @apply text-gray-400 hover:text-orange-500 hover:pl-2 transition-all duration-300;
+}
+
+/* Recipe Detail Page */
+.prose ol > li::marker {
+    @apply font-bold text-green-800;
+}
+
+.prose ol > li {
+    @apply mb-4;
+}
+
+.prose p {
+    @apply leading-relaxed;
+}
+
+.social-share-btn {
+    @apply w-12 h-12 rounded-full flex items-center justify-center text-white text-xl hover:opacity-80 transition-opacity;
+}
+
+/* Guide Card Styles */
+.guide-card {
+    @apply bg-white p-8 rounded-lg shadow-lg text-center transition-all duration-300 hover:shadow-2xl hover:scale-105;
+}
+
+/* Gluten-free icon rotation fix */
+.fa-bread-slice {
+    transform: rotate(-30deg);
+}
