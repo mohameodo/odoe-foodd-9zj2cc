@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe - Flavor Adventures</title> <!-- Title will be updated by JS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800 font-roboto">
+
+    <!-- Header / Navbar -->
+    <header id="navbar" class="bg-white/80 backdrop-blur-lg shadow-md sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-playfair font-bold text-green-800">Flavor Adventures</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/recipes" class="nav-link active">Recipes</a>
+                <a href="/tips" class="nav-link">Cooking Guides</a>
+                <a href="/about" class="nav-link">About</a>
+            </nav>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="/recipes" class="bg-orange-500 text-white px-5 py-2 rounded-full hover:bg-orange-600 transition-colors duration-300 text-sm font-medium">Find a Recipe</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-green-800 focus:outline-none">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="/" class="block py-2 text-gray-700 hover:text-orange-500">Home</a>
+            <a href="/recipes" class="block py-2 text-orange-500 font-semibold">Recipes</a>
+            <a href="/tips" class="block py-2 text-gray-700 hover:text-orange-500">Cooking Guides</a>
+            <a href="/about" class="block py-2 text-gray-700 hover:text-orange-500">About</a>
+            <a href="/recipes" class="block mt-4 bg-orange-500 text-white px-5 py-2 rounded-full text-center">Find a Recipe</a>
+        </div>
+    </header>
+
+    <main id="recipe-content-wrapper" class="container mx-auto px-6 py-12 opacity-0 transition-opacity duration-500">
+        <!-- Breadcrumbs -->
+        <div class="mb-6 text-sm text-gray-500">
+            <a href="/" class="hover:text-orange-500">Home</a>
+            <span class="mx-2">/</span>
+            <a href="/recipes" class="hover:text-orange-500">Recipes</a>
+            <span class="mx-2">/</span>
+            <span id="breadcrumb-recipe-title" class="text-gray-700 font-medium"></span>
+        </div>
+
+        <!-- Recipe Header -->
+        <div class="text-center mb-8">
+            <h1 id="recipe-title" class="text-4xl md:text-6xl font-playfair font-bold text-green-800 mb-4"></h1>
+            <p id="recipe-description" class="text-lg text-gray-600 max-w-3xl mx-auto"></p>
+        </div>
+
+        <!-- Main Recipe Layout -->
+        <div class="lg:grid lg:grid-cols-3 lg:gap-12">
+            <!-- Left Column: Image, Info, Ingredients -->
+            <div class="lg:col-span-1">
+                <img id="recipe-image" src="" alt="" class="w-full h-auto object-cover rounded-lg shadow-lg mb-8">
+                
+                <div class="bg-cream-100 p-6 rounded-lg mb-8">
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <i class="fas fa-clock text-orange-500 text-2xl mb-2"></i>
+                            <p class="font-bold">Prep Time</p>
+                            <p id="prep-time" class="text-sm text-gray-600"></p>
+                        </div>
+                        <div>
+                            <i class="fas fa-fire text-orange-500 text-2xl mb-2"></i>
+                            <p class="font-bold">Cook Time</p>
+                            <p id="cook-time" class="text-sm text-gray-600"></p>
+                        </div>
+                        <div>
+                            <i class="fas fa-users text-orange-500 text-2xl mb-2"></i>
+                            <p class="font-bold">Servings</p>
+                            <p id="servings" class="text-sm text-gray-600"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h2 class="text-2xl font-playfair font-bold text-green-800 mb-4">Ingredients</h2>
+                    <ul id="ingredients-list" class="space-y-3"></ul>
+                </div>
+            </div>
+
+            <!-- Right Column: Instructions, Rating, Sharing -->
+            <div class="lg:col-span-2 mt-8 lg:mt-0">
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <h2 class="text-2xl font-playfair font-bold text-green-800 mb-6">Instructions</h2>
+                    <div id="instructions-list" class="prose max-w-none"></div>
+                </div>
+
+                <!-- Rating and Sharing -->
+                <div class="mt-8 bg-cream-100 p-6 rounded-lg flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Did you make this recipe?</h3>
+                        <p class="text-gray-600">Rate it below to help other cooks!</p>
+                        <div id="rating-stars" class="flex items-center text-3xl text-gray-300 cursor-pointer mt-2">
+                            <i class="fa-solid fa-star" data-value="1"></i>
+                            <i class="fa-solid fa-star" data-value="2"></i>
+                            <i class="fa-solid fa-star" data-value="3"></i>
+                            <i class="fa-solid fa-star" data-value="4"></i>
+                            <i class="fa-solid fa-star" data-value="5"></i>
+                        </div>
+                        <p id="rating-feedback" class="text-sm text-green-700 mt-1 h-4"></p>
+                    </div>
+                    <div class="text-center md:text-right">
+                        <h3 class="font-bold text-lg mb-2">Share it!</h3>
+                        <div id="social-share" class="flex space-x-4">
+                            <a href="#" target="_blank" class="social-share-btn bg-blue-600"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" target="_blank" class="social-share-btn bg-blue-400"><i class="fab fa-twitter"></i></a>
+                            <a href="#" target="_blank" class="social-share-btn bg-red-600"><i class="fab fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Spinner -->
+    <div id="loading-spinner" class="flex justify-center items-center h-64">
+        <i class="fas fa-spinner fa-spin fa-3x text-orange-500"></i>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-4">Flavor Adventures</h3>
+                    <p class="text-gray-400">Your daily dose of deliciousness. Inspiring cooks of all levels.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/recipes" class="footer-link">Recipes</a></li>
+                        <li><a href="/tips" class="footer-link">Cooking Guides</a></li>
+                        <li><a href="/about" class="footer-link">About Us</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="font-semibold text-lg mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/recipes?cuisine=Italian" class="footer-link">Italian</a></li>
+                        <li><a href="/recipes?diet=Vegan" class="footer-link">Vegan</a></li>
+                        <li><a href="/recipes?diet=Quick" class="footer-link">Quick & Easy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors"><i class="fab fa-pinterest fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors"><i class="fab fa-twitter fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 Flavor Adventures. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://odoe.studio" target="_blank" class="fixed bottom-4 right-4 bg-white text-gray-700 px-4 py-2 rounded-full shadow-lg text-sm font-semibold hover:bg-gray-100 transition-all duration-300 z-50">
+        Made by Odoe
+    </a>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/recipe-detail.js"></script>
+</body>
+</html>
