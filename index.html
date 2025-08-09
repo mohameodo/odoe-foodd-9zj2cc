@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavor Adventures - Delicious Recipes for Every Cook</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="bg-cream-100 text-gray-800 font-roboto">
+
+    <!-- Header / Navbar -->
+    <header id="navbar" class="bg-white/80 backdrop-blur-lg shadow-md sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-playfair font-bold text-green-800">Flavor Adventures</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/recipes" class="nav-link">Recipes</a>
+                <a href="/tips" class="nav-link">Cooking Guides</a>
+                <a href="/about" class="nav-link">About</a>
+            </nav>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="/recipes" class="bg-orange-500 text-white px-5 py-2 rounded-full hover:bg-orange-600 transition-colors duration-300 text-sm font-medium">Find a Recipe</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-green-800 focus:outline-none">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="/" class="block py-2 text-gray-700 hover:text-orange-500">Home</a>
+            <a href="/recipes" class="block py-2 text-gray-700 hover:text-orange-500">Recipes</a>
+            <a href="/tips" class="block py-2 text-gray-700 hover:text-orange-500">Cooking Guides</a>
+            <a href="/about" class="block py-2 text-gray-700 hover:text-orange-500">About</a>
+            <a href="/recipes" class="block mt-4 bg-orange-500 text-white px-5 py-2 rounded-full text-center">Find a Recipe</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-[80vh] min-h-[500px] bg-cover bg-center text-white flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop');">
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="relative z-10 text-center px-4 animate-fade-in-up">
+                <h1 class="text-4xl md:text-6xl font-playfair font-bold mb-4">Discover Your Next Favorite Meal</h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">From weeknight dinners to holiday feasts, explore thousands of recipes tested and perfected for you.</p>
+                <a href="#featured-recipes" class="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-all duration-300 font-semibold text-lg transform hover:scale-105">Explore Recipes</a>
+            </div>
+        </section>
+
+        <!-- Featured Recipes Section -->
+        <section id="featured-recipes" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-playfair font-bold text-green-800">This Week's Favorites</h2>
+                    <p class="text-gray-600 mt-2">Hand-picked recipes that our readers are loving right now.</p>
+                </div>
+                <div id="featured-recipes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Featured recipe cards will be injected here by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="py-16 md:py-24 bg-cream-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-playfair font-bold text-green-800">Explore by Category</h2>
+                    <p class="text-gray-600 mt-2">Find recipes tailored to your taste and dietary needs.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+                    <a href="/recipes?cuisine=Italian" class="category-card">
+                        <div class="icon-wrapper"><i class="fas fa-pizza-slice"></i></div>
+                        <h3 class="font-semibold mt-4">Italian</h3>
+                    </a>
+                    <a href="/recipes?cuisine=Mexican" class="category-card">
+                        <div class="icon-wrapper"><i class="fas fa-pepper-hot"></i></div>
+                        <h3 class="font-semibold mt-4">Mexican</h3>
+                    </a>
+                    <a href="/recipes?cuisine=Asian" class="category-card">
+                        <div class="icon-wrapper"><i class="fas fa-utensils"></i></div>
+                        <h3 class="font-semibold mt-4">Asian</h3>
+                    </a>
+                     <a href="/recipes?diet=Vegan" class="category-card">
+                        <div class="icon-wrapper"><i class="fas fa-seedling"></i></div>
+                        <h3 class="font-semibold mt-4">Vegan</h3>
+                    </a>
+                    <a href="/recipes?diet=Gluten-Free" class="category-card">
+                        <div class="icon-wrapper"><i class="fas fa-bread-slice"></i></div>
+                        <h3 class="font-semibold mt-4">Gluten-Free</h3>
+                    </a>
+                    <a href="/recipes?diet=Quick" class="category-card">
+                        <div class="icon-wrapper"><i class="fas fa-clock"></i></div>
+                        <h3 class="font-semibold mt-4">Quick & Easy</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup Section -->
+        <section class="bg-green-700 text-white py-16">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl font-playfair font-bold mb-2">Join the Adventure!</h2>
+                <p class="max-w-xl mx-auto mb-6">Get our latest recipes, cooking tips, and special offers delivered straight to your inbox weekly.</p>
+                <form id="newsletter-form" class="max-w-lg mx-auto flex flex-col sm:flex-row gap-4">
+                    <input type="email" id="newsletter-email" placeholder="Your email address" required class="flex-grow px-4 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-400">
+                    <button type="submit" class="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-colors duration-300 font-semibold">Subscribe</button>
+                </form>
+                <p id="newsletter-feedback" class="mt-4 h-5"></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-playfair font-bold mb-4">Flavor Adventures</h3>
+                    <p class="text-gray-400">Your daily dose of deliciousness. Inspiring cooks of all levels.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/recipes" class="footer-link">Recipes</a></li>
+                        <li><a href="/tips" class="footer-link">Cooking Guides</a></li>
+                        <li><a href="/about" class="footer-link">About Us</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="font-semibold text-lg mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/recipes?cuisine=Italian" class="footer-link">Italian</a></li>
+                        <li><a href="/recipes?diet=Vegan" class="footer-link">Vegan</a></li>
+                        <li><a href="/recipes?diet=Quick" class="footer-link">Quick & Easy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors"><i class="fab fa-pinterest fa-lg"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 transition-colors"><i class="fab fa-twitter fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 Flavor Adventures. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://odoe.studio" target="_blank" class="fixed bottom-4 right-4 bg-white text-gray-700 px-4 py-2 rounded-full shadow-lg text-sm font-semibold hover:bg-gray-100 transition-all duration-300 z-50">
+        Made by Odoe
+    </a>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
